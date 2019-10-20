@@ -1,6 +1,6 @@
 ## Step 1
 
-create postgres databse with nodeapp as name and then put the db config in `src/congiv/env.js`
+create postgres databse with `nodeapp` as name and then put the db config in `src/congiv/env.js`
 
 ## Step 2
 
