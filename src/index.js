@@ -18,6 +18,8 @@ app.use(function (req, res, next) {
 }); 
 app.use(bodyParser.json()); 
 business.businessRoutes(app);
+app.use('/uploads/business-images', express.static('uploads/business-images'));
+
 
 app.listen(env.port, function () {
     console.log('app listening at port %s', 3000);

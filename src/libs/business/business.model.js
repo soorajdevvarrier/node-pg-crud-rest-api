@@ -1,9 +1,18 @@
 const Sequelize = require('sequelize');
+const multer = require('multer'); 
 
 const sequelize = require('../../configs/connection');
 const Business = require('../../models/business')(sequelize, Sequelize);
 
 Business.sync();
+exports.uploadBusinessImage = multer({
+    storage: multer.diskStorage({
+        destination: 'uploads/business-images/',
+        filename: function (req, file, callback) {
+            callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+        }
+    })
+}).single('businessImage'); 
 exports.createBusiness = (businessData) => {
     return new Promise((resolve, reject) => {
         Business.create(businessData).then(business => {
